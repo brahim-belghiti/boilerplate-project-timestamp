@@ -4,7 +4,7 @@ const { checkIfDate, isValidDate, convertToUnixAndUTC } = require('../utils/help
 
 router.get("/:clientvalue", function (req, res) {
     const clientvalue = req.params.clientvalue;
-    if (!checkIfDate(clientvalue) && isNaN(clientvalue) && isValidDate(clientvalue)) {
+    if (!checkIfDate(clientvalue) && isNaN(clientvalue) && !isValidDate(clientvalue)) {
         res.send({ "error": "Invalid Date" })
     }
 
