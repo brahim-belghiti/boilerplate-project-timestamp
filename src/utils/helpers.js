@@ -30,4 +30,4 @@ function isValidDate(value) {
 
 
 
-module.exports = { checkIfDate, convertToUnixAndUTC };
+module.exports = { checkIfDate, isValidDate, convertToUnixAndUTC };

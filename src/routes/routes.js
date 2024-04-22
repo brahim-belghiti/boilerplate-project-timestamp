@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { checkIfDate, convertToUnixAndUTC } = require('../utils/helpers');
+const { checkIfDate, isValidDate, convertToUnixAndUTC } = require('../utils/helpers');
 
 router.get("/:clientvalue", function (req, res) {
     const clientvalue = req.params.clientvalue;
