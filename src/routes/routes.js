@@ -4,7 +4,7 @@ const { checkIfDate, convertToUnixAndUTC } = require('../utils/helpers');
 
 router.get("/:clientvalue", function (req, res) {
     const clientvalue = req.params.clientvalue;
-    if (!checkIfDate(clientvalue) && isNaN(clientvalue)) {
+    if (!checkIfDate(clientvalue) && isNaN(clientvalue) && isValidDate(clientvalue)) {
         res.send({ "error": "Invalid Date" })
     }
 
@@ -25,6 +25,16 @@ router.get("/:clientvalue", function (req, res) {
     }
 
     let formatedDate = convertToUnixAndUTC(clientvalue);
+    const responseObject = {
+        unix: formatedDate.unixTime,
+        utc: formatedDate.utcTime
+    };
+    res.json(responseObject);
+});
+
+router.get("/", function (req, res) {
+    const timeNow = Date.now();
+    let formatedDate = convertToUnixAndUTC(timeNow);
     const responseObject = {
         unix: formatedDate.unixTime,
         utc: formatedDate.utcTime

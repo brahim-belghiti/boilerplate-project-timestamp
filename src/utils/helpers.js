@@ -19,6 +19,15 @@ function convertToUnixAndUTC(timeString) {
     };
 }
 
+function isValidDate(value) {
+    // Attempt to create a new Date object from the given date string
+    const date = new Date(value);
+
+    // Check if the created date object is valid
+    // Date.parse() returns NaN for invalid dates
+    return !isNaN(date.getTime());
+}
+
 
 
 module.exports = { checkIfDate, convertToUnixAndUTC };
